@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Cart from './components/Cart.jsx';
 import Navbar from'./components/Navbar.jsx'
 import Home from './components/Home.jsx'
@@ -14,6 +16,7 @@ function App() {
       <Navbar/>      
      {/* <UserPage />*/}
       <Home /> 
+      <Cart/>
       <Footer />
     </>
   )
