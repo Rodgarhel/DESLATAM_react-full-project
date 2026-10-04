@@ -55,6 +55,22 @@ hr {
   }
 }
 
+.infoPizza{
+  display: flex;
+  flex-direction: column;
+  gap:  8px;
+  padding: 1rem;
+
+  p{
+    margin-left:2rem;
+    margin-right:2rem;  
+    font-style: italic;  
+  }
+  h2, h3{
+    align-self: center; 
+  }
+}
+
 .home{
   .header {
     display: flex;
