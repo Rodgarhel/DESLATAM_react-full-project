@@ -1,17 +1,18 @@
-function CardPizza(props) {
+
+function CardPizza({pizza}) {
     return (
         <article className="cardPizza">
             <div className="cardImage">
-                <img src={props.img} alt={props.name} />
-                <h3>Pizza {props.name}</h3>
+                <img src={pizza.img} alt={pizza.name} />
+                <h3>Pizza {pizza.name}</h3>
             </div>  
 
             <div  className="cardIngredients">
             <p>Ingredientes:</p> 
-            <p className="ingredients">🍕{props.ingredients.join(", ")}</p> 
+            <p className="ingredients">🍕{pizza.ingredients.join(", ")}</p> 
             </div>
             
-            <h2 className="cardPrice">Precio: ${props.price.toLocaleString()}</h2>
+            <h2 className="cardPrice">Precio: ${pizza.price.toLocaleString()}</h2>
             <div className="cardButtons">
                 <button className="btnMore">Ver más 👀</button>
                 <button className="btnAdd">Añadir 🛒</button>  

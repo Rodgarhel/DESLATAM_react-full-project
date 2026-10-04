@@ -1,33 +1,37 @@
+import { useState, useEffect}  from 'react';
+
 import Header from './Header.jsx'; 
 import CardPizza from './CardPizza.jsx';
 import pizzaNap from '../assets/pizza_napp.jpg';
 import pizzaEsp from'../assets/pizza_esp.jpg';
 import pizzaPep from '../assets/pizza_pep.jpg';
 
+
+
 function Home() {
+    const  [pizzas, setPizzas] = useState([]);
+        
+    const fetchPizzas = async ()=>{
+        const url = "http://localhost:5000/api/pizzas";
+        const  response = await fetch(url);
+        const data  = await response.json();
+        setPizzas(data);
+        console.log(data);
+    }    
+    useEffect(()=>{
+        fetchPizzas();
+    }, []);
+   
     return (
         <main className="home">
-            <Header />
-            
+            <Header />            
             <section className="gallery">
-                <CardPizza
-                name="Napolitana"
-                price={5950}
-                ingredients={["mozzarella", "tomates", "jamón", "orégano"]}                
-                img={pizzaNap}
-                />
-                <CardPizza
-                name="Española"
-                price={6950}
-                ingredients={["mozzarella", "gorgonzola", "parmesano", "provolone"]}
-                img={pizzaEsp}
-                />
-                <CardPizza
-                name="Pepperoni"
-                price={6950}
-                ingredients={["mozzarella", "pepperoni", "orégano"]}
-                img={pizzaPep}
-                />
+                {pizzas.length > 0 ? pizzas.map((pizza)=>(
+                    <CardPizza
+                    key={pizza.id}
+                    pizza={pizza}
+                    />                 
+                )) : <p>...Loading Products</p>}
             </section>
         </main>
     )

@@ -1,16 +1,42 @@
-# React + Vite
+# React  Proyect: Mamma Mia Pizzeria!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🔗 Live Demo
+(https://rodgarhel.github.io/Mamma_mia_pizza_Project/)
 
-Currently, two official plugins are available:
+## Description
+An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+### V 0.4
+Added a Pizza.jsx file for each pizza's details, for future implementation. Also changed the pizzas data, for an API link to a local URL.  
+### V 0.3
+Added a cart section, that works using UseState and calling menu data from a js file. 
+### V 0.2
+Login and register page. For now this page is replacing the home page. You can still find the home page in the files. 
+This version explores how to use forms and states to validate registration or login.
+### V 0.1
+Structure. Just the main structure of the landing page, including buttons, initial tokens and components.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- HTML5
+- CSS3
+- JavaScript
+- React
+
+---
+
+## 🎯 Learning Objectives
+
+- Exercise functions and events with Java Script
+- build a simple web.
+
+---
+
+## 👨‍💻 Author
+
+Rodrigo García
+
+GitHub:
+https://github.com/Rodgarhel
