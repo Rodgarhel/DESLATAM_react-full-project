@@ -4,5 +4,5 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:"https://rodgarhel.github.io/Mamma_mia_pizza_Project"
+  base:"/DESLATAM_react-full-project/"
 })
