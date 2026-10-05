@@ -1,7 +1,7 @@
 # React  Proyect: Mamma Mia Pizzeria!
 
 ## 🔗 Live Demo
-(https://rodgarhel.github.io/Mamma_mia_pizza_Project/)
+(https://rodgarhel.github.io/DESLATAM_react-full-project/)
 
 ## Description
 An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
