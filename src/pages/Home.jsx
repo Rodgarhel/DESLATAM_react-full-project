@@ -1,11 +1,7 @@
 import { useState, useEffect}  from 'react';
 
-import Header from './Header.jsx'; 
-import CardPizza from './CardPizza.jsx';
-import pizzaNap from '../assets/pizza_napp.jpg';
-import pizzaEsp from'../assets/pizza_esp.jpg';
-import pizzaPep from '../assets/pizza_pep.jpg';
-
+import Header from '../components/Header.jsx'; 
+import CardPizza from '../components/CardPizza.jsx';
 
 
 function Home() {
