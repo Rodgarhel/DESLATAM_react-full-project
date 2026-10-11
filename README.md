@@ -7,6 +7,9 @@
 An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
 
 
+### V 0.55
+Added Routes functionality, making it possible to navigate the web. Now you can accese the different sub-pages for   testing, including profile and "404" page. 
+FOr now, links on navbar are set to visible and I yet have to sync global values, like overall total, and user validation. 
 ### V 0.4
 Added a Pizza.jsx file for each pizza's details, for future implementation. Also changed the pizzas data, for an API link to a local URL.  
 ### V 0.3
