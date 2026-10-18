@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function CardPizza({pizza}) {
     return (
@@ -14,7 +15,9 @@ function CardPizza({pizza}) {
             
             <h2 className="cardPrice">Precio: ${pizza.price.toLocaleString()}</h2>
             <div className="cardButtons">
-                <button className="btnMore">Ver más 👀</button>
+                <Link to='/Pizza'>
+                    <button className="btnMore">Ver más 👀</button>
+                </Link>
                 <button className="btnAdd">Añadir 🛒</button>  
             </div>
         </article>
