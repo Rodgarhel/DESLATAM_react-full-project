@@ -6,8 +6,10 @@
 ## Description
 An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
 
+### V 0.6
+Changed the whole project so it now uses context. The API, cart total and button functionalities are now managed by the CartContext component.
 
-### V 0.55
+### V 0.5
 Added Routes functionality, making it possible to navigate the web. Now you can accese the different sub-pages for   testing, including profile and "404" page. 
 FOr now, links on navbar are set to visible and I yet have to sync global values, like overall total, and user validation. 
 ### V 0.4

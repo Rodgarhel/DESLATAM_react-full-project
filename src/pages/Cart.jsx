@@ -1,49 +1,43 @@
-import { useState }  from 'react'
-import { pizzaCart } from '../assets/pizzas'
+import {useCart} from '../context/CartContext.jsx';
 
 function Cart() {
-  const [itemCount, setItemCount] = useState({});
-
-  const addItem = (id) => {
-    setItemCount(prev => ({
-        ...prev, [id]: (prev[id] || 0) +1
-    }));
-  };
-
-  const subItem = (id) => {
-    setItemCount(prev => ({
-        ...prev, [id]: Math.max((prev[id] || 0) - 1, 0)
-    }))
-  }
-
-  // Calculate total 
-  const total = pizzaCart.reduce((acc, item) => { return acc + item.price * (itemCount[item.id] || 0); }, 0);
+  const { pizzas, cart, total, addToCart, removeFromCart,} = useCart();
 
   return (
     <div className='cartZone'>
       <h3>Detalles del pedido:</h3>
+
         <div className='cartBox'>            
-            {pizzaCart.map((item)=>(
+            {cart.map((cartItem)=>{
+              // find pizza info corresponding to ID
+              const pizza = pizzas.find(
+                (pizza) => pizza.id === cartItem.id
+              );
+
+              if(!pizza) { return null;}
+              return (
+            
                 <li className='Cart-item'
-                key={item.id}>
+                key={cartItem.id}>
                     <div className='itemBox'>
-                        <img src={item.img} alt={item.name} className='cart-img'/>
-                        <p>{item.name}</p>
+                        <img src={pizza.img} alt={pizza.name} className='cart-img'/>
+                        <p>{pizza.name}</p>
                     </div>
-                    <p>${item.price}</p>
+                    <p>${pizza.price}</p>
                     <div className='cart-btnBox'>
                         <button className='cart-btn' 
                         id='subBtn'
-                        onClick={()=>subItem(item.id)}
+                        onClick={()=>{removeFromCart(cartItem.id)}}
                         >-</button>
-                        <p>{itemCount[item.id] || 0}</p>
+                        <p>{cartItem.count}</p>
                         <button className='cart-btn' 
                         id='addBtn'
-                        onClick={()=>addItem(item.id)}
+                        onClick={()=>{addToCart(cartItem.id)}}
                         >+</button>
                     </div>
                 </li>
-            ))}   
+            )
+          })}   
             <h2>Total:${total}</h2>
             <button>Pagar</button>
         </div>

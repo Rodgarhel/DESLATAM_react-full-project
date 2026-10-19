@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom'
+import {useCart} from '../context/CartContext.jsx';
 
 function Navbar() {
-    const total  = 25000;
-    const token =  true;
+    const { total } = useCart();       
 
     return (
         <nav className="navbar">            

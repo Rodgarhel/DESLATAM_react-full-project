@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import {useCart} from '../context/CartContext.jsx';
 
 function CardPizza({pizza}) {
+    const { addToCart } = useCart();    
+    
     return (
         <article className="cardPizza">
             <div className="cardImage">
@@ -18,7 +21,7 @@ function CardPizza({pizza}) {
                 <Link to='/Pizza'>
                     <button className="btnMore">Ver más 👀</button>
                 </Link>
-                <button className="btnAdd">Añadir 🛒</button>  
+                <button onClick={() => addToCart(pizza.id)} className="btnAdd">Añadir 🛒</button>  
             </div>
         </article>
     )

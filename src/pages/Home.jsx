@@ -1,22 +1,10 @@
-import { useState, useEffect}  from 'react';
-
 import Header from '../components/Header.jsx'; 
 import CardPizza from '../components/CardPizza.jsx';
+import  { useCart } from '../context/CartContext.jsx';
 
 
 function Home() {
-    const  [pizzas, setPizzas] = useState([]);
-        
-    const fetchPizzas = async ()=>{
-        const url = "http://localhost:5000/api/pizzas";
-        const  response = await fetch(url);
-        const data  = await response.json();
-        setPizzas(data);
-        console.log(data);
-    }    
-    useEffect(()=>{
-        fetchPizzas();
-    }, []);
+    const { pizzas, cart } = useCart();
    
     return (
         <main className="home">
