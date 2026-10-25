@@ -1,39 +1,42 @@
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import {useCart} from '../context/CartContext.jsx';
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext.jsx';
 
 function Navbar() {
+    const { token, setToken } = useContext(GlobalContext);
     const { total } = useCart();       
 
     return (
         <nav className="navbar">            
             <div className="navButtons">
                 <h3> Pizzería Mamma Mia!</h3>
-                <NavLink to="/DESLATAM_react-full-project/">
+                <NavLink to="/">
                     {({ isActive }) => (
                         <button className={isActive ? "btnActive" : "btnNav"}>
                         🍕 Home</button>
                     )}
-                </NavLink>              
-                    <NavLink to="/Profile">
+                </NavLink>     
+                {token && <NavLink to="/Profile">
                     {({ isActive }) => (
                         <button className={isActive ? "btnActive" : "btnNav"}>
-                        🔓Profile </button>
-                    )}
-                </NavLink>
-                    <button className="btnNav">🔒Logout</button>                    
-                <NavLink to="/Login">
+                        🔓Profile </button>)}
+                </NavLink> }
+                {token && (<button className="btnNav" 
+                onClick={()=>setToken(false)}>
+                    🔒Logout</button>)}  
+
+                {!token && <NavLink to="/Login">
                 {({ isActive }) => (
                     <button className={isActive ? "btnActive" : "btnNav"}>
-                    🔐Login</button>
-                )}
-                </NavLink>
-                <NavLink to="/Register">
+                    🔐Login</button>)}
+                </NavLink> }
+                {!token && <NavLink to="/Register">
                 {({ isActive }) => (
                     <button className={isActive ? "btnActive" : "btnNav"}>
-                    🔐Register</button>
-                )}
-                </NavLink>                                    
+                    🔐Register</button>)}
+                </NavLink>}                                 
                 
             </div>
             <div className="cart">

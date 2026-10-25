@@ -6,6 +6,10 @@
 ## Description
 An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
 
+### V 0.7
+Mainly added a global token to reroute to specific pages depending if "logged in" or not. The token also block  certain  features.
+Changed some route  functions to work with NavLink and {Navigate()}
+
 ### V 0.6
 Changed the whole project so it now uses context. The API, cart total and button functionalities are now managed by the CartContext component.
 

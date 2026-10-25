@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext';
 
 function Login() {
   const [email,setEmail] = useState("");
@@ -7,6 +8,8 @@ function Login() {
   const [msg, setMsg] = useState("");
   const [color, setColor] = useState("");
   const navigate = useNavigate();
+
+  const { setToken } = useContext(GlobalContext); 
 
   const handleSubmit = (e)=>{
     e.preventDefault();    
@@ -24,7 +27,8 @@ function Login() {
         setMsg("User registered correctly");
         setEmail("");
         setPass("");
-        navigate("/DESLATAM_react-full-project");
+        setToken(true);
+        navigate("/");
         return;
     }};
 

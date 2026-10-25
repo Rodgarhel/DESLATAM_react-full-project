@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import {useCart} from '../context/CartContext.jsx';
+import { GlobalContext } from '../context/GlobalContext.jsx';
 
 function Cart() {
+  const { token } =useContext(GlobalContext);
   const { pizzas, cart, total, addToCart, removeFromCart,} = useCart();
-
+  
   return (
     <div className='cartZone'>
       <h3>Detalles del pedido:</h3>
@@ -39,7 +42,7 @@ function Cart() {
             )
           })}   
             <h2>Total:${total}</h2>
-            <button>Pagar</button>
+            <button disabled={!token}  >Pagar</button>
         </div>
     </div>
   )
