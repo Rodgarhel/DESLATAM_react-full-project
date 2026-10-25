@@ -1,4 +1,5 @@
-import {Link} from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+
 import {useCart} from '../context/CartContext.jsx';
 
 function Navbar() {
@@ -8,46 +9,37 @@ function Navbar() {
         <nav className="navbar">            
             <div className="navButtons">
                 <h3> Pizzería Mamma Mia!</h3>
-                <Link to="/DESLATAM_react-full-project/">
-                    <button className="btnNav">🍕 Home</button>
-                </Link>
-                {/* token workflow
-                {
-                    token ? (<>
-                    <Link to="/Profile">
-                        <button className="btnNav">🔓Profile</button>
-                    </Link>
-                    <button className="btnNav">🔒Logout</button>
-                    </>):(<>
-                    <Link to="/Login">
-                        <button className="btnNav">🔐Login</button>
-                    </Link>
-                    <Link to="/Register">
-                        <button className="btnNav">🔐Register</button>
-                    </Link>
-                    </>)
-                } 
-                 */}
-                 
-                    
-                    <Link to="/Profile">
-                        <button className="btnNav">🔓Profile</button>
-                    </Link>
+                <NavLink to="/DESLATAM_react-full-project/">
+                    {({ isActive }) => (
+                        <button className={isActive ? "btnActive" : "btnNav"}>
+                        🍕 Home</button>
+                    )}
+                </NavLink>              
+                    <NavLink to="/Profile">
+                    {({ isActive }) => (
+                        <button className={isActive ? "btnActive" : "btnNav"}>
+                        🔓Profile </button>
+                    )}
+                </NavLink>
                     <button className="btnNav">🔒Logout</button>                    
-                    <Link to="/Login">
-                        <button className="btnNav">🔐Login</button>
-                    </Link>
-                    <Link to="/Register">
-                        <button className="btnNav">🔐Register</button>
-                    </Link>
-                    
-                 
+                <NavLink to="/Login">
+                {({ isActive }) => (
+                    <button className={isActive ? "btnActive" : "btnNav"}>
+                    🔐Login</button>
+                )}
+                </NavLink>
+                <NavLink to="/Register">
+                {({ isActive }) => (
+                    <button className={isActive ? "btnActive" : "btnNav"}>
+                    🔐Register</button>
+                )}
+                </NavLink>                                    
                 
             </div>
             <div className="cart">
-                <Link to="/Cart">
+                <NavLink to="/Cart">
                     <button className="btnCart">🛒 Total: ${total.toLocaleString()} </button>
-                </Link>
+                </NavLink>
             </div>
         </nav>
     )

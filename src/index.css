@@ -251,17 +251,21 @@ hr {
     height: 3rem;
     background-color: #212529;
     color:#E7F9FF;
-    .btnNav, .btnCart{
+    .btnNav, .btnCart, .btnActive{
       padding: 2px 4px;
-      color: inherit;
+      color: #E7F9FF;
       background-color: inherit;
       border: inset 1px #E7F9FF;
       border-radius: 4px; 
       height: 1.5rem;
+      
     }
     .btnCart{
       border: solid 1px #1fc7ff;
       color: #1fc7ff;
+    }
+    .btnActive{
+      background-color: #4d8496;;
     }
     .btnNav:hover, .btnCart:hover {
         background-color: rgb(45, 60, 75);
