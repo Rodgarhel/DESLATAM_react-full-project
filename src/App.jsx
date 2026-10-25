@@ -19,7 +19,7 @@ function App() {
       <Navbar/>   
       <Routes>
         <Route path="/DESLATAM_react-full-project/" element = {<Home />} />      
-        <Route path="/Pizza" element = { <Pizza />} /> 
+        <Route path="/Pizza/:id" element = { <Pizza />} /> 
         <Route path="/Cart" element = { <Cart/>} />
         <Route path="/Register" element = { <Register/>} />
         <Route path="/Login" element = { <Login/>} />
