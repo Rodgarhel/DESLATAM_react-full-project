@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import {useCart} from '../context/CartContext.jsx';
 
 function CardPizza({pizza}) {
     const { addToCart } = useCart();    
+    const navigate =  useNavigate();
     
     return (
         <article className="cardPizza">
@@ -18,9 +19,8 @@ function CardPizza({pizza}) {
             
             <h2 className="cardPrice">Precio: ${pizza.price.toLocaleString()}</h2>
             <div className="cardButtons">
-                <Link to='/Pizza'>
-                    <button className="btnMore">Ver más 👀</button>
-                </Link>
+                <button onClick={()=> navigate(`/Pizza/${pizza.id}`)} className="btnMore">Ver más 👀</button>
+                
                 <button onClick={() => addToCart(pizza.id)} className="btnAdd">Añadir 🛒</button>  
             </div>
         </article>
