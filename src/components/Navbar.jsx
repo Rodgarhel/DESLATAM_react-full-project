@@ -1,12 +1,18 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import {useCart} from '../context/CartContext.jsx';
 import { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalContext.jsx';
 
 function Navbar() {
-    const { token, setToken } = useContext(GlobalContext);
-    const { total } = useCart();       
+    const { logout,  token } = useContext(GlobalContext);
+    const { total } = useCart();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+    };
 
     return (
         <nav className="navbar">            
@@ -24,7 +30,7 @@ function Navbar() {
                         🔓Profile </button>)}
                 </NavLink> }
                 {token && (<button className="btnNav" 
-                onClick={()=>setToken(false)}>
+                onClick={handleLogout}>
                     🔒Logout</button>)}  
 
                 {!token && <NavLink to="/Login">

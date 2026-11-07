@@ -6,6 +6,10 @@
 ## Description
 An evolving proyect using React. The goal is to, step by step, learn to use the tool by developing a webpage for a fantasy Pizza place. 
 
+### V 0.8
+Final version. Login and register capabilities using JWT. Now users can login with a default user, register a new one and you need a token to access the purchase capabilities of the cart.
+this is the final update of the project.
+
 ### V 0.7
 Mainly added a global token to reroute to specific pages depending if "logged in" or not. The token also block  certain  features.
 Changed some route  functions to work with NavLink and {Navigate()}

@@ -9,9 +9,9 @@ function Login() {
   const [color, setColor] = useState("");
   const navigate = useNavigate();
 
-  const { setToken } = useContext(GlobalContext); 
+  const { login } = useContext(GlobalContext); 
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();    
 
     if( !email.trim() || !pass.trim() ){
@@ -21,15 +21,19 @@ function Login() {
     if(pass.length < 6){
       setColor("red")
       setMsg("Password must be at least 6 characters")
-      return;
-      }else{
+      return}
+      
+      try {
+         await login(email, pass);
+
         setColor("green");
-        setMsg("User registered correctly");
+        setMsg("Login successful");
         setEmail("");
-        setPass("");
-        setToken(true);
-        navigate("/");
-        return;
+        setPass("");        
+        navigate("/");        
+    } catch (error) {
+      setColor("red")
+      setMsg(error.message)
     }};
 
   return (
@@ -44,7 +48,7 @@ function Login() {
             placeholder='Enter your email'
             name='Email'
             value={email}
-            onChange = {(e)=>{setEmail (e.target.value)}}
+            onChange = {(e)=>{setEmail(e.target.value)}}
           />
           <p>Password</p>
           <input 

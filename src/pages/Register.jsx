@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../context/GlobalContext.jsx';
 
 function Register() {
   const [email,setEmail] = useState("");
@@ -7,30 +9,40 @@ function Register() {
   const [msg, setMsg] = useState("");
   const [color, setColor] = useState("");
 
-  const handleSubmit = (e)=>{
+  const { register } = useContext(GlobalContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e)=>{
     e.preventDefault();
 
-    if(
-      email ===""||
-      pass ===""||
-      passRe ===""
-    ){
+    if(!email.trim() || !pass.trim() || !passRe.trim()) {
       setColor("red")
       setMsg("All fields are mandatory")
       return}
+
     if(pass.length < 6){
       setColor("red")
       setMsg("Password must be at least 6 characters")
       return}
+
     if(pass !== passRe){
       setColor("red")
       setMsg("Passwords do not match")
       return
-    }else{
+    }
+    try {
+      await register(email, pass);
+
       setColor("green");
       setMsg("User registered correctly");
-      return} 
-  }
+      setEmail("");
+      setPass("");   
+      setPassRe("");     
+      navigate("/Profile");  
+  } catch (error) {
+      setColor("red");
+      setMsg(error.message);    
+  }};
 
   return (
     <div className='credentials'>  

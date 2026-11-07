@@ -1,10 +1,49 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {useCart} from '../context/CartContext.jsx';
 import { GlobalContext } from '../context/GlobalContext.jsx';
 
 function Cart() {
   const { token } =useContext(GlobalContext);
-  const { pizzas, cart, total, addToCart, removeFromCart,} = useCart();
+  const { pizzas, cart, total, addToCart, removeFromCart, clearCart} = useCart();
+
+  const [msg, setMsg] = useState("");
+  const [color, setColor] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // CHECKOUT 
+  const handleCheckout = async () => {
+    if (!token || cart.length === 0) return;
+    
+    setLoading(true);
+    setMsg("");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ cart }),
+        });
+      
+        const data =await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || data.message || "Purchase failed");
+        }
+
+        clearCart();
+        setColor("green");
+        setMsg("Purchase successful!");
+  } catch (error) {
+    setColor("red");
+    setMsg(error.message || "Purchase failed");
+  } finally {
+    setLoading(false);
+  }};
+  
+  // RENDER
   
   return (
     <div className='cartZone'>
@@ -42,7 +81,12 @@ function Cart() {
             )
           })}   
             <h2>Total:${total}</h2>
-            <button disabled={!token}  >Pagar</button>
+            <button disabled={!token || cart.length === 0 || loading}
+              onClick={handleCheckout}
+            >
+              {loading ? "Procesando..." : "Pagar"}
+            </button>
+            {msg && <p style={{ color }}>{msg}</p>}
         </div>
     </div>
   )
